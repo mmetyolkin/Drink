@@ -9,7 +9,7 @@ typealias UsersListener = (users: List<User>) -> Unit
 class UsersService {
     private var users : MutableList<User> = mutableListOf<User>()
 
-    private val listeners: MutableSet<UsersListener> = mutableSetOf<UsersListener>()
+    private val listeners = mutableSetOf<UsersListener>()
 
     init {
         val faker = Faker.instance()
@@ -27,7 +27,7 @@ class UsersService {
     }
 
     fun deleteUser(user: User) {
-        val indexToDelete: Int = users.indexOfFirst { it.id == user.id }
+        val indexToDelete = users.indexOfFirst { it.id == user.id }
         if (indexToDelete != -1) {
             users.removeAt(indexToDelete)
             notifyChanges()
@@ -35,17 +35,17 @@ class UsersService {
     }
 
     fun moveUser(user: User, moveBy: Int) {
-        val oldIndex: Int = users.indexOfFirst { it.id == user.id }
+        val oldIndex = users.indexOfFirst { it.id == user.id }
         if (oldIndex == -1) return
-        val newIndex: Int = oldIndex + moveBy
+        val newIndex = oldIndex + moveBy
         if (newIndex < 0 || newIndex >= users.size) return
-        Collections.swap(users,oldIndex, newIndex)
+        Collections.swap(users, oldIndex, newIndex)
         notifyChanges()
     }
 
     fun addListener(listener: UsersListener) {
         listeners.add(listener)
-        notifyChanges()
+        listener.invoke(users)
     }
 
     fun removeListener(listener: UsersListener) {
