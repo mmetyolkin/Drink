@@ -30,6 +30,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ImageView
+        android:id="@+id/blockImageViewButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="6dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/moreImageViewButton"
+        android:src="@drawable/ic_block"
+        />
+
 
     <TextView
         android:id="@+id/userNameTextView"
@@ -43,7 +56,7 @@
         tools:text="John Smith"
         app:layout_constraintTop_toTopOf="@id/photoImageView"
         app:layout_constraintStart_toEndOf="@id/photoImageView"
-        app:layout_constraintEnd_toStartOf="@id/moreImageViewButton"  />
+        app:layout_constraintEnd_toStartOf="@id/blockImageViewButton"  />
 
     <TextView
         android:id="@+id/userCompanyTextView"
